@@ -256,76 +256,76 @@
 
 // -------------------- Код задачи 2 HARD ----------------------
 
-int InputInt32(string message)
-{
-  Console.WriteLine(message);
-  int result = Convert.ToInt32(Console.ReadLine());
-  return result;
-}
+// int InputInt32(string message)
+// {
+//   Console.WriteLine(message);
+//   int result = Convert.ToInt32(Console.ReadLine());
+//   return result;
+// }
 
-void PrintArray(int[,] array)
-{
-  for (int i = 0; i < array.GetLength(0); i++)
-  {
-    for (int j = 0; j < array.GetLength(1); j++)
-      Console.Write($"{array[i, j],2} \t");
-    Console.WriteLine();
-  }
-}
+// void PrintArray(int[,] array)
+// {
+//   for (int i = 0; i < array.GetLength(0); i++)
+//   {
+//     for (int j = 0; j < array.GetLength(1); j++)
+//       Console.Write($"{array[i, j],2} \t");
+//     Console.WriteLine();
+//   }
+// }
 
-void FillArray(int[,] array)
-{
-  for (int i = 0; i < array.GetLength(0); i++)
-  {
-    for (int j = 0; j < array.GetLength(1); j++)
-      array[i, j] = new Random().Next(0, 100);
-  }
-}
+// void FillArray(int[,] array)
+// {
+//   for (int i = 0; i < array.GetLength(0); i++)
+//   {
+//     for (int j = 0; j < array.GetLength(1); j++)
+//       array[i, j] = new Random().Next(0, 100);
+//   }
+// }
 
-void HardRandArray(int[,] array)
-{
-  int[,] dejavuTable = new int[array.GetLength(0), array.GetLength(1)];
-  int iterations = 0;
-  int maxIterations = (array.GetLength(0) * array.GetLength(1)) / 2;
-  while (iterations < maxIterations)
-  {
-    int rndRow1 = new Random().Next(0, array.GetLength(0));
-    int rndColumn1 = new Random().Next(0, array.GetLength(1));
-    int rndRow2 = new Random().Next(0, array.GetLength(0));
-    int rndColumn2 = new Random().Next(0, array.GetLength(1));
-    if (dejavuTable[rndRow1, rndColumn1] == 0
-    && dejavuTable[rndRow2, rndColumn2] == 0
-    && (rndRow1 != rndRow2 || rndColumn1 != rndColumn2))
-    {
-      (array[rndRow1, rndColumn1], array[rndRow2, rndColumn2]) = (array[rndRow2, rndColumn2], array[rndRow1, rndColumn1]);
-      dejavuTable[rndRow1, rndColumn1] = dejavuTable[rndRow2, rndColumn2] = 1;
-      iterations++;
-      Console.WriteLine($"Итерация {iterations}: [{rndRow1},{rndColumn1}]<--->[{rndRow2},{rndColumn2}]");
-    }
-  }
-}
+// void HardRandArray(int[,] array)
+// {
+//   int[,] dejavuTable = new int[array.GetLength(0), array.GetLength(1)];
+//   int iterations = 0;
+//   int maxIterations = (array.GetLength(0) * array.GetLength(1)) / 2;
+//   while (iterations < maxIterations)
+//   {
+//     int rndRow1 = new Random().Next(0, array.GetLength(0));
+//     int rndColumn1 = new Random().Next(0, array.GetLength(1));
+//     int rndRow2 = new Random().Next(0, array.GetLength(0));
+//     int rndColumn2 = new Random().Next(0, array.GetLength(1));
+//     if (dejavuTable[rndRow1, rndColumn1] == 0
+//     && dejavuTable[rndRow2, rndColumn2] == 0
+//     && (rndRow1 != rndRow2 || rndColumn1 != rndColumn2))
+//     {
+//       (array[rndRow1, rndColumn1], array[rndRow2, rndColumn2]) = (array[rndRow2, rndColumn2], array[rndRow1, rndColumn1]);
+//       dejavuTable[rndRow1, rndColumn1] = dejavuTable[rndRow2, rndColumn2] = 1;
+//       iterations++;
+//       Console.WriteLine($"Итерация {iterations}: [{rndRow1},{rndColumn1}]<--->[{rndRow2},{rndColumn2}]");
+//     }
+//   }
+// }
 
-try
-{
-  int row = InputInt32("Введите количество строк массива: ");
-  int column = InputInt32("Введите количество столбцов массива: ");
-  if ((row * column) % 2 == 0)
-  {
-    int[,] array = new int[row, column];
-    FillArray(array);
-    Console.WriteLine("Полученный массив:");
-    PrintArray(array);
-    Console.WriteLine("Журнал итераций:");
-    HardRandArray(array);
-    Console.WriteLine("Массив после рандомного перемешивания:");
-    PrintArray(array);
-  }
-  else
-    Console.WriteLine("Массив такой размерности содержит нечётное количество элементов!");
-}
-catch
-{
-  Console.WriteLine("Введены некорректные данные!");
-}
+// try
+// {
+//   int row = InputInt32("Введите количество строк массива: ");
+//   int column = InputInt32("Введите количество столбцов массива: ");
+//   if ((row * column) % 2 == 0)
+//   {
+//     int[,] array = new int[row, column];
+//     FillArray(array);
+//     Console.WriteLine("Полученный массив:");
+//     PrintArray(array);
+//     Console.WriteLine("Журнал итераций:");
+//     HardRandArray(array);
+//     Console.WriteLine("Массив после рандомного перемешивания:");
+//     PrintArray(array);
+//   }
+//   else
+//     Console.WriteLine("Массив такой размерности содержит нечётное количество элементов!");
+// }
+// catch
+// {
+//   Console.WriteLine("Введены некорректные данные!");
+// }
 
 // ------------------------------------------
